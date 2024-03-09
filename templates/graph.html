@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Accuracy Graph</title>
+</head>
+<body>
+    <h1>Accuracy of Classifiers</h1>
+    <div class="graph-container">
+    
+    <img src="{{ url_for('static', filename='accuracy_plot.png') }}" alt="Accuracy Plot" , class="graph-image" >
+</div>
+</body>
+</html>

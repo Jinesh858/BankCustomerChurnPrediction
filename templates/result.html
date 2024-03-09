@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Churn Prediction Result</h1>
+        <div class="prediction">
+            {% if churn_prediction == 1 %}
+                <p class="churn">The customer is likely to leave the bank.</p>
+                <h2>Retention Offers:</h2>
+                <p>{{ retention_offers }}</p>
+            {% else %}
+                <p class="no-churn">The customer is unlikely to leave the bank.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
