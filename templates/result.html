@@ -5,19 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Churn Prediction Result</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f4f8;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .prediction {
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Churn Prediction Result</h1>
         <div class="prediction">
-            {% if churn_prediction == 1 %}
-                <p class="churn">The customer is likely to leave the bank.</p>
-                <h2>Retention Offers:</h2>
-                <p>{{ retention_offers }}</p>
-            {% else %}
-                <p class="no-churn">The customer is unlikely to leave the bank.</p>
-            {% endif %}
+            <h2>Churn Prediction:</h2>
+            <p>{{ 'Customer is likely to leave the bank' if churn_prediction == 1 else 'Customer will not leave the bank' }}</p>
         </div>
+        
+        {% if offers %}
+        <div class="prediction">
+            <h2>Retention Offers:</h2>
+            <ul>
+                {% for offer in offers %}
+                <li>{{ offer }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
     </div>
 </body>
 </html>
